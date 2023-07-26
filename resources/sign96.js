@@ -18,7 +18,7 @@ Math.random = function () {
 var Object_toString = Object.prototype.toString;
 Object.prototype.toString = function () {
     let _temp = Object_toString.call(this, arguments);
-    console.log(this);
+//    console.log(this);
 //    console.log("Object.prototype.toString: " + _temp);
     if (this.constructor.name === 'Document') {
         return '[object HTMLDocument]';
