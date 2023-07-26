@@ -4,6 +4,7 @@ var morgan = require('morgan');
 var xb = require('./resources/xb');
 var signature = require('./resources/signature');
 var __ac_signature = require('./resources/__ac_signature');
+var D = require('./resources/sign96');
 
 
 var app = express();
@@ -50,6 +51,13 @@ app.get('/signature', function(req, res) {
 app.get('/ac_signature', function(req, res) {
     let nonce = req.query.nonce;
     let result = __ac_signature.get_ac_signature(nonce);
+    res.send(result);
+})
+
+
+app.get('/sign96', function(req, res) {
+    let md5 = req.query.md5;
+    let result = D.D(md5);
     res.send(result);
 })
 
