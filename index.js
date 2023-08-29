@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 
 var xb = require('./resources/xb');
+const sign = require('./resources/xbogus.8.29');
 var signature = require('./resources/signature');
 var __ac_signature = require('./resources/__ac_signature');
 var D = require('./resources/sign96');
@@ -30,8 +31,8 @@ app.get('/xb', function(req, res){
     let data = JSON.parse(str_data);
     let url_para = data.url_para;
     let ua = data.ua;
-    let time_now = new Date().getTime() / 1000;
-    let result = xb.xb_main(url_para, ua, time_now);
+    // let result = xb.xb_main(url_para, ua, time_now);
+    let result = sign.sign(url_para, ua);
     res.send(result);
 })
 
